@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='UTF-8'>
+    <title>My Library</title>
+    <link rel='stylesheet' type='style/css' href='style.css'>
+</head>
+<body>
+    <button id='addNew'>Add New Book</button>
+    <div id='container' class='container'></div>
+</body>
+<script>
+    let bookAdder = document.getElementById('addNew');
+
+    bookAdder.addEventListener('click', addBookToLibrary);
+
+
+    //this array is the library
+    let myLibrary = [];
+
+    //constructor for book objects
+    function Book(title, author, pages, read){
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+        this.info = function() {
+            return (title + ' by ' + author + ', ' + pages + ' pages,' + read);
+        }
+    }
+
+    function addBookToLibrary(){
+        console.log('this is working')
+        //fill in function to add book to myLibrary array
+    }
+
+    //example book for testing
+    const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, ' not read yet')
+    console.log(hobbit.info())
+</script>
+</html>
