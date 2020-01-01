@@ -2,36 +2,83 @@
 <head>
     <meta charset='UTF-8'>
     <title>My Library</title>
-    <link rel='stylesheet' type='style/css' href='style.css'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
 </head>
 <body>
+    <form id='bookForm'>
+        Title: <br>
+        <input type='text' name='title' class = 'field' id='title'><br>
+        Author: <br>
+        <input type='text' name='author' id='author'><br>
+        Pages: <br>
+        <input type='text' name='pages' id='pages'><br>
+        Read yet?: <br>
+        <form id='readRadio'>
+         <input type='radio' name='status' value = 'read'>Yes
+         <input type='radio' name='status' value = 'unread' checked>No
+        </form>
+    </form>
     <button id='addNew'>Add New Book</button>
+    <button id='test'>Test Render</button>
     <div id='container' class='container'></div>
 </body>
 <script>
     let bookAdder = document.getElementById('addNew');
+    let shelf = document.getElementById('container');
+    
+    let testRender = document.getElementById('test');
+    let titleText = document.getElementById('title').value
+    let authorText = document.getElementById('author').value;
+    let pagesText = document.getElementById('pages').value;
+    let statusText = document.querySelector('input[name = "status"]:checked').value;
 
     bookAdder.addEventListener('click', addBookToLibrary);
+    
+    //testRender.addEventListener('click', render)
+    
 
 
     //this array is the library
     let myLibrary = [];
+    let infoArray = [];
+
 
     //constructor for book objects
+
     function Book(title, author, pages, read){
         this.title = title
         this.author = author
         this.pages = pages
         this.read = read
         this.info = function() {
-            return (title + ' by ' + author + ', ' + pages + ' pages,' + read);
+            return (title + ' by ' + author + ', ' + pages + ' pages, ' + read);
         }
     }
 
     function addBookToLibrary(){
-        console.log('this is working')
-        //fill in function to add book to myLibrary array
+        
+        titleText = document.getElementById('title').value
+        authorText = document.getElementById('author').value;
+        pagesText = document.getElementById('pages').value;
+        statusText = document.querySelector('input[name = "status"]:checked').value;
+        let newBook = {
+            title: titleText, 
+            author: authorText,
+            pages: pagesText,
+            status: statusText,
+        };
+        myLibrary.push('newBook');
+        
+        function render(){
+            let newDiv = document.createElement('div');
+           newDiv.innerHTML = (newBook.title + ' by ' + newBook.author + ', ' + newBook.pages + ' pages,' + newBook.status)
+            shelf.appendChild(newDiv);
+        }
+        render();
     }
+
+
+    
 
     //example book for testing
     const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, ' not read yet')

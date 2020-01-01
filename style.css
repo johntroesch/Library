@@ -1,4 +1,12 @@
-#container {
+.container {
     border-style: solid;
     border-color: blue
+}
+
+button {
+    color: red;
+}
+
+.container div {
+    background-color: azure;
 }
